@@ -1,0 +1,54 @@
+/* EnhancedTable.css */
+
+.enhanced-table-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+}
+
+.table-wrapper {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--white);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.search-input {
+  width: 60%;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--gray);
+  border-radius: 0.25rem;
+}
+
+.filter-select {
+  min-width: 150px;
+}
+
+
+.table-row {
+  transition: background-color 0.3s;
+}
+
+.table-row:hover {
+  background-color: var(--light-gray);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}

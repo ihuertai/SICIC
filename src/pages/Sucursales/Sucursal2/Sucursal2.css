@@ -1,0 +1,58 @@
+.mainContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  background-color: #fff;
+}
+
+.heartContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heart {
+  position: relative;
+  width: 100px;
+  height: 90px;
+  background: var(--black);
+  transform: rotate(-45deg);
+  margin-bottom: 20px;
+  animation: beat 1s infinite;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 90px;
+  background: var(--black);
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -50px;
+  left: 0;
+}
+
+.heart::after {
+  left: 50px;
+  top: 0;
+}
+
+.message {
+  font-size: 24px;
+  color: #333;
+  font-weight: bold;
+}
+
+@keyframes beat {
+  0%, 100% {
+    transform: scale(1) rotate(-45deg);
+  }
+  50% {
+    transform: scale(1.1) rotate(-45deg);
+  }
+}

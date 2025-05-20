@@ -1,0 +1,54 @@
+.cardContainer {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--white);
+  width: 37rem;
+  aspect-ratio: 40 / 25;
+  border-radius: 2rem;
+  box-shadow: 1px 1px 2rem -1px var(--gray);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.miniCard1 {
+  display: flex;
+  background-color: var(--blackBlue);
+  width: 50%;
+  border-radius: 2rem;
+  justify-content: center;
+  align-items: center;
+  transition: transform .7s ease-out;
+}
+
+.miniCard2 {
+  display: flex;
+  width: 50%;
+  border-radius: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.centeredText {
+  text-align: center;
+}
+
+.leftText {
+  color: var(--blackBlue);
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.cardContainer:hover {
+  transform: translateY(-10px);
+  box-shadow: 1px 1px 2rem -1px var(--gray);
+}
+
+.miniCard1.slide-right {
+  transform: translateX(100%);
+}
+
+.miniCard1.slide-left {
+  transform: translateX(-100%);
+}

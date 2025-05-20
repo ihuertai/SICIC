@@ -1,0 +1,39 @@
+.circle-container {
+  width: 150px;
+  height: 150px;
+  background-color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.5s ease;
+  box-shadow: 1px 1px 2rem -.5rem var(--yellow);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 3rem;
+}
+
+.imgContainer {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  transition: transform 0.5s ease;
+}
+
+.circle-container:hover {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}

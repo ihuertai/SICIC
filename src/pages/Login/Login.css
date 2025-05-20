@@ -1,0 +1,78 @@
+.cardContainer {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--white);
+  width: 37rem;
+  max-width: 100%;
+  aspect-ratio: 40 / 25;
+  border-radius: 2rem;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  height: 60vh; /* Ajuste para centrar verticalmente */
+}
+
+/* Estilos para las tarjetas */
+.miniCard1, .miniCard2 {
+  width: 50%;
+  height: 100%;
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.7s ease-out, opacity 0.5s ease-out;
+  padding: 1.5rem;
+  box-sizing: border-box; /* Asegura que el padding no afecte el tamaño */
+}
+
+.miniCard1 {
+  background-color: var(--blackBlue);
+  color: #ffffff;
+}
+
+.miniCard2 {
+  background-color: #ffffff;
+  color: var(--blackBlue);
+}
+
+/* Ajuste de la sección principal para centrado vertical */
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Asegura el centrado vertical */
+  padding: 0;
+  margin: 0;
+}
+
+/* Animación en hover */
+.cardContainer:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+}
+
+/* Efectos de deslizamiento */
+.miniCard1.slide-right {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.miniCard1.slide-left {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.miniCard2.slide-right {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.miniCard2.slide-left {
+  transform: translateX(100%);
+  opacity: 0;
+}
