@@ -1,24 +1,23 @@
 import './Sucursal1.css';
 
 import BarrelDiv from '../../../components/barril';
-import CircularWaterDrop from '../../../components/dropCircle';
-import CustomCard from '../../../components/card';
 import Header from '../../../components/header';
-import { Link } from 'react-router-dom';
-import LoginBtn from '../../../components/loginBtn';
-import LoginCard from '../../../components/loginCard'
 
 function Sucursal1() {
 
   return (
     <>
-        <Header />
-        <div className='mainContainer'>
-            <div className='leftContainer'>
-            </div>
-            <div className='rightContainer'>
-            </div>
+      <Header />
+      <div className='mainContainer'>
+        <div className='inContainer leftContainer'>
+          <BarrelDiv product={'product1'} />
+          <BarrelDiv product={'product2'} />
+          <BarrelDiv product={'product3'} />
+          <BarrelDiv product={'product4'} />
         </div>
+        <div className='inContainer rightContainer'>
+        </div>
+      </div>
     </>
   )
 }
