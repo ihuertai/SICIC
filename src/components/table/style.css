@@ -1,14 +1,16 @@
-/* EnhancedTable.css */
-
 .enhanced-table-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80%;
+  padding: 2rem;
+  width: 100%;
+  min-height: 80vh; /* Para centrar verticalmente */
+  box-sizing: border-box;
 }
 
 .table-wrapper {
   width: 100%;
+  max-width: 1000px;
   padding: 1rem;
   background-color: var(--white);
   border-radius: 0.5rem;
@@ -28,16 +30,12 @@
 }
 
 .search-input {
-  width: 60%;
+  width: 100%;
   padding: 0.5rem 1rem;
   border: 1px solid var(--gray);
   border-radius: 0.25rem;
+  background-color: white;
 }
-
-.filter-select {
-  min-width: 150px;
-}
-
 
 .table-row {
   transition: background-color 0.3s;

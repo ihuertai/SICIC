@@ -18,11 +18,17 @@
 }
 
 .water {
+  display: flex;
+  align-items: center;
   position: absolute;
   bottom: 0;
-  width: 60%;
-  height: 150%;
+  width: 150%;
+  height: 60%;
   transition: transform 0.1s ease-out;
+}
+
+.water p {
+  padding-left: .15rem;
 }
 
 

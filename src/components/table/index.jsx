@@ -1,66 +1,95 @@
 import "./style.css";
 
-import { Avatar, InputBase, MenuItem, Pagination, Paper, Select, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
+import {
+  InputBase,
+  Pagination,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+} from "@mui/material";
 import React, { useMemo, useState } from "react";
+
+const ROWS_PER_PAGE = 5;
 
 const EnhancedReactTable = ({ data }) => {
   const [search, setSearch] = useState("");
-  const [roleFilter, setRoleFilter] = useState("All");
+  const [page, setPage] = useState(1);
 
+  // Filtrado
   const filteredData = useMemo(() => {
     return data.filter((row) =>
-      row.name.toLowerCase().includes(search.toLowerCase()) &&
-      (roleFilter === "All" || row.role === roleFilter)
+      Object.values(row).some((value) =>
+        value.toString().toLowerCase().includes(search.toLowerCase())
+      )
     );
-  }, [data, search, roleFilter]);
+  }, [data, search]);
+
+  // Paginación
+  const paginatedData = useMemo(() => {
+    const start = (page - 1) * ROWS_PER_PAGE;
+    return filteredData.slice(start, start + ROWS_PER_PAGE);
+  }, [filteredData, page]);
+
+  const totalPages = Math.ceil(filteredData.length / ROWS_PER_PAGE);
 
   return (
     <div className="enhanced-table-container">
       <Paper className="table-wrapper">
-        <Typography variant="h5" className="title">Movimientos</Typography>
+        <Typography variant="h5" className="title">
+          Movimientos
+        </Typography>
 
         <div className="controls">
           <InputBase
-            placeholder="Search..."
+            placeholder="Buscar..."
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              setPage(1); // reset page
+            }}
             className="search-input"
           />
-
-          <Select className="filter-select" value={roleFilter} onChange={(e) => setRoleFilter(e.target.value)}>
-            <MenuItem value="All">All</MenuItem>
-            <MenuItem value="Admin">Admin</MenuItem>
-            <MenuItem value="Member">Member</MenuItem>
-            <MenuItem value="Owner">Owner</MenuItem>
-          </Select>
         </div>
 
         <TableContainer component={Paper} className="custom-table-container">
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>Name</TableCell>
-                <TableCell>Title</TableCell>
-                <TableCell>Status</TableCell>
-                <TableCell>Age</TableCell>
-                <TableCell>Role</TableCell>
+                <TableCell>Fecha</TableCell>
+                <TableCell>Remisión</TableCell>
+                <TableCell>Factura</TableCell>
+                <TableCell>Descripción</TableCell>
+                <TableCell>Monto</TableCell>
+                <TableCell>Comentario</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {filteredData.map((row, index) => (
+              {paginatedData.map((row, index) => (
                 <TableRow key={index} className="table-row">
-                  <TableCell><Avatar src={row.avatar} alt={row.name} /> {row.name}</TableCell>
-                  <TableCell>{row.email}</TableCell>
-                  <TableCell>{row.email}</TableCell>
-                  <TableCell>{row.age}</TableCell>
-                  <TableCell>{row.email}</TableCell>
+                  <TableCell>{row.fecha}</TableCell>
+                  <TableCell>{row.remision}</TableCell>
+                  <TableCell>{row.factura}</TableCell>
+                  <TableCell>{row.descripcion}</TableCell>
+                  <TableCell>${row.monto.toFixed(2)}</TableCell>
+                  <TableCell>{row.comentario}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </TableContainer>
 
-        <Pagination className="pagination" count={Math.ceil(filteredData.length / 5)} color="primary" />
+        <Pagination
+          className="pagination"
+          count={totalPages}
+          page={page}
+          onChange={(_, value) => setPage(value)}
+          color="primary"
+        />
       </Paper>
     </div>
   );
