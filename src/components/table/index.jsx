@@ -14,11 +14,18 @@ import {
 } from "@mui/material";
 import React, { useMemo, useState } from "react";
 
+import CurrencyInput from "react-currency-input-field";
+import CustomInput from "../loginInput";
+import LoginBtn from "../loginBtn";
+import ReusableModal from "../modal";
+
 const ROWS_PER_PAGE = 5;
+const date = new Date();
 
 const EnhancedReactTable = ({ data }) => {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
+  const [open, setOpen] = useState(false);
 
   // Filtrado
   const filteredData = useMemo(() => {
@@ -40,9 +47,27 @@ const EnhancedReactTable = ({ data }) => {
   return (
     <div className="enhanced-table-container">
       <Paper className="table-wrapper">
-        <Typography variant="h5" className="title">
-          Movimientos
-        </Typography>
+        <div className="title">
+          <Typography variant="h5">Movimientos</Typography>
+          <div className="addMovement">
+            <button onClick={() => setOpen(true)}>➕</button>
+          </div>
+        </div>
+
+        <ReusableModal open={open} onClose={() => setOpen(false)} title="Agregar Movimiento">
+          <div className="leftText">
+            <form onSubmit={() => setOpen(false)}>
+              <CustomInput inputType='date' name="date" required />
+              <CustomInput placeholder="Descripción" inputType={'text'} name="descripcion" />
+              <CustomInput placeholder="Monto (Ej: 1500.35)" inputType={'text'} name="monto" required />
+              <CustomInput placeholder="Comentario" inputType={'text'} name="comentario" />
+              <div className='btnContainer'>
+                <LoginBtn text={'GUARDAR'} variant='primary' type='submit' />
+              </div>
+            </form>
+          </div>
+        </ReusableModal>
+
 
         <div className="controls">
           <InputBase

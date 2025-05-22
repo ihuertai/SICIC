@@ -16,7 +16,7 @@
   border-radius: 2rem;
   justify-content: center;
   align-items: center;
-  transition: transform .7s ease-out;
+  transition: transform 0.7s ease-out;
 }
 
 .miniCard2 {
@@ -41,7 +41,6 @@
 }
 
 .cardContainer:hover {
-  transform: translateY(-10px);
   box-shadow: 1px 1px 2rem -1px var(--gray);
 }
 
