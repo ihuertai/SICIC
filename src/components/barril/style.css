@@ -21,6 +21,7 @@
   display: flex;
   align-items: center;
   position: absolute;
+  background-color: var(--black);
   bottom: 0;
   width: 150%;
   height: 60%;

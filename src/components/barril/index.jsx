@@ -7,7 +7,7 @@ export default function BarrelDiv({product, tankName}) {
   return (
     <div className="barrel-container">
       <div className="barrel">
-        <div className={`water ${product}`}>
+        <div className={`water `}>
           <p>{tankName}</p>
         </div>
       </div>
