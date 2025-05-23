@@ -14,8 +14,11 @@ import {
 } from "@mui/material";
 import React, { useMemo, useState } from "react";
 
+import AddBoxIcon from '@mui/icons-material/AddBox';
 import CurrencyInput from "react-currency-input-field";
 import CustomInput from "../loginInput";
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditSquareIcon from '@mui/icons-material/EditSquare';
 import LoginBtn from "../loginBtn";
 import ReusableModal from "../modal";
 
@@ -91,6 +94,7 @@ const EnhancedReactTable = ({ data }) => {
                 <TableCell>Descripción</TableCell>
                 <TableCell>Monto</TableCell>
                 <TableCell>Comentario</TableCell>
+                <TableCell>Acciones</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -102,6 +106,7 @@ const EnhancedReactTable = ({ data }) => {
                   <TableCell>{row.descripcion}</TableCell>
                   <TableCell>${row.monto.toFixed(2)}</TableCell>
                   <TableCell>{row.comentario}</TableCell>
+                  <TableCell> <EditSquareIcon/> <DeleteIcon/>  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
